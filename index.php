@@ -21,8 +21,9 @@
 
 <p>在網頁上也會出現 GET 傳遞資料用法</p>
 <ul>
-  <li><a href="https://www.google.com.tw/search?q=php">查看更多『php』的資料</a></li>
-  <li><a href="https://www.google.com.tw/search?q=程式">查看更多『程式』的資料</a></li>
+  <li><a href="https://www.google.com.tw/search?q=php" target="_blank">查看更多『php』的資料</a></li>
+  <li><a href="https://www.google.com.tw/search?q=程式" target="_blank">查看更多『程式』的資料</a></li>
+  <a href="https://www.google.com/search?q=捍衛戰士" target="_blank">查詢更多『捍衛戰士』</a>
 </ul>
 
 <p>用表單(GET)傳遞資料用法</p>
