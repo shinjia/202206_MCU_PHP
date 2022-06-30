@@ -2,7 +2,6 @@
 $h = isset($_GET['h']) ? $_GET['h'] : '';
 $w = isset($_GET['w']) ? $_GET['w'] : '';
 
-
 $html = <<< HEREDOC
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +24,6 @@ $html = <<< HEREDOC
 <script>
 function check_data()
 {
-    alert('X');
     var flag = true;
     var message = '';
     
@@ -37,7 +35,8 @@ function check_data()
     if(t.value=='')
     {
         flag = false;
-        message += '(1) 身高不能為空白\n';
+        message += '(1) 身高不能為空白' + String.fromCharCode(13);
+
     }
 
     alert(message);

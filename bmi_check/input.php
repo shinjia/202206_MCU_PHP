@@ -19,7 +19,6 @@
 <script>
 function check_data()
 {
-    alert('X');
     var flag = true;
     var message = '';
     
