@@ -7,6 +7,55 @@
 <body>
 
 
+<div class="hot" style="background-color:rgb(235, 216, 189); padding:5px;">
+  <p>(快速連結) db_系列程式：|
+     <a href="db_mysqli/">db_mysqli</a> |
+     <a href="db_pdo_sth/">db_pdo_sth</a> |
+     <a href="db_ext/">db_ext</a> ||
+     <a href="my_film/">my_film</a> |
+     <a href="my_store/">my_store</a> |
+  </p>
+</div>
+
+
+
+
+
+<h2>Class 07 (2022.07.12)</h2>
+
+<p>參考上列資料庫系列程式</p>
+
+<p>補充：表單檢查的問題，參考 <a href="form_check_php/">form_check_php</a> 資料夾</p>
+<p>&nbsp;</p>
+
+
+
+
+
+<h2>Class 06 (2022.07.07)</h2>
+
+<p>db_系列程式</p>
+<ul>
+  <li><a href="db_test/">db_test</a></li>
+  <li><a href="db_mysqli/">db_mysqli</a></li>
+</ul>
+
+<p>PHP 連結 MySQL 的程式測試 (db_test)</p>
+<ul>
+  <li>查看原始碼：[<a href="show_source.php?dir=db_test&amp;file=test1.php">db_test/test1.php</a>]</li>
+</li>
+</ul>
+
+<p>改出一套自己的資料庫練習程式</p>
+<ul>
+  <li><a href="my_book/">my_book 書籍資料管理</a></li>
+</ul>
+
+<p>&nbsp;</p>
+
+
+
+
 
 <h2>Class 05 (2022.07.05)</h2>
 
