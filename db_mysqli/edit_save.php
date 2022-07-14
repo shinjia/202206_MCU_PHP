@@ -29,6 +29,10 @@ if(mysqli_query($link, $sqlstr))
 {
    $msg = '資料已修改完畢!!!!!!!!';
    $msg .= '<br><a href="display.php?uid=' . $uid . '">詳細</a>';
+
+   $url = 'display.php?uid=' . $uid ;
+   header('location: ' . $url);
+   exit;
 }
 else
 {

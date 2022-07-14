@@ -1,11 +1,16 @@
 <?php
 include 'config.php';
 
+$key= isset($_POST['key']) ? $_POST['key'] : '';
+
 // 連接資料庫
 $link = db_open();
-
+// SELECT * FROM person username LIKE '%孔%'
 
 $sqlstr = "SELECT * FROM person ";
+$sqlstr .= "WHERE username LIKE '%$key%' ";
+// $sqlstr .= "WHERE username='$key' ";
+echo $sqlstr;
 
 $result = mysqli_query($link, $sqlstr);
 

@@ -14,6 +14,10 @@ $result = @mysqli_query($link, $sqlstr);
 if($result)
 {
    $refer = $_SERVER['HTTP_REFERER'];  // 呼叫此程式之前頁
+   // echo '<pre>';
+   // print_r($_SERVER);
+   // echo '</pre>';
+   // echo $refer;exit;
    header('Location: ' . $refer);
 }
 else

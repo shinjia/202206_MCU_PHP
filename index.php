@@ -11,11 +11,18 @@
   <p>(快速連結) db_系列程式：|
      <a href="db_mysqli/">db_mysqli</a> |
      <a href="db_pdo_sth/">db_pdo_sth</a> |
-     <a href="db_ext/">db_ext</a> ||
-     <a href="my_film/">my_film</a> |
-     <a href="my_store/">my_store</a> |
+     <a href="db_ext/">db_ext</a> |
+     
   </p>
 </div>
+
+
+<h2>Class 08 (2022.07.14)</h2>
+
+<p>參考上列資料庫系列程式</p>
+
+<p>&nbsp;</p>
+
 
 
 

@@ -9,6 +9,9 @@
 <p align="center"><a href="list_all.php">list_all 資料全部列出</a></p>
 <p align="center"><a href="list_page.php">list_page 分頁列出</a></p>
 <hr />
+<p align="center"><a href="find.php">find 查詢</a></p>
+<p align="center"><a href="find2.php">find2 查詢(分頁顯示)</a></p>
+<hr />
 <p align="center"><a href="install.php">安裝資料庫或資料表</a></p>
 </body>
 </html>
