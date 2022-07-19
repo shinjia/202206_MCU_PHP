@@ -2,6 +2,7 @@
 include 'config.php';
 include 'utility.php';
 
+
 // 連接資料庫
 $pdo = db_open();
 
@@ -48,7 +49,7 @@ HEREDOC;
    <h2 align="center">共有 {$total_rec} 筆記錄</h2>
    <table border="1" align="center">
       <tr>
-         <th>序號</th>
+         <th>👨‍🚀</th>
          <th>代碼</th>
          <th>姓名</th>
          <th>地址</th>
@@ -67,7 +68,6 @@ else
    // 無法執行 query 指令時
    $html = error_message('list_all');
 }
-
 
 include 'pagemake.php';
 pagemake($html, '');

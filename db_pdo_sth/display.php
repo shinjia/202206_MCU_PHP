@@ -22,6 +22,7 @@ if($sth->execute())
       $uid = $row['uid'];
       $usercode = convert_to_html($row['usercode']);
       $username = convert_to_html($row['username']);
+      $usernamex = $row['username'];
       $address  = convert_to_html($row['address']);
       $birthday = convert_to_html($row['birthday']);
       $height   = convert_to_html($row['height']);
@@ -32,6 +33,7 @@ if($sth->execute())
        <table>
          <tr><th>代碼</th><td>{$usercode}</td></tr>
          <tr><th>姓名</th><td>{$username}</td></tr>
+         <tr><th>姓名</th><td>{$usernamex}</td></tr>
          <tr><th>地址</th><td>{$address}</td></tr>
          <tr><th>生日</th><td>{$birthday}</td></tr>
          <tr><th>身高</th><td>{$height}</td></tr>

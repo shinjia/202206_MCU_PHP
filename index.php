@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>PHP</title>
+<base target="_blank">
 </head>
 <body>
 
@@ -12,22 +13,16 @@
      <a href="db_mysqli/">db_mysqli</a> |
      <a href="db_pdo_sth/">db_pdo_sth</a> |
      <a href="db_ext/">db_ext</a> |
+     <a href="db_ext2/">db_ext2</a> |
+     <a href="db_pdo/">db_pdo</a> |
+     <a href="db2_pdo/">db2_pdo</a> |
      
   </p>
 </div>
 
 
+<h2>Class 09 (2022.07.19)</h2>
 <h2>Class 08 (2022.07.14)</h2>
-
-<p>參考上列資料庫系列程式</p>
-
-<p>&nbsp;</p>
-
-
-
-
-
-
 <h2>Class 07 (2022.07.12)</h2>
 
 <p>參考上列資料庫系列程式</p>

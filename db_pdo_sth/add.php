@@ -1,9 +1,19 @@
 <?php
 
+$head = <<< HEREDOC
+<script>
+function check_data()
+{
+   alert('ok');
+   return true;
+}
+</script>
+HEREDOC;
+
 $html = <<< HEREDOC
 <button onclick="history.back();">返回</button>
 <h2>新增資料</h2>
-<form action="add_save.php" method="post">
+<form action="add_save.php" method="post" onsubmit="return check_data();">
 <table>
    <tr><th>代碼</th><td><input type="text" name="usercode" value=''></td></tr>
    <tr><th>姓名</th><td><input type="text" name="username" value=''></td></tr>
@@ -17,6 +27,6 @@ $html = <<< HEREDOC
 </form>
 HEREDOC;
 
-include 'pagemake.php';
-pagemake($html, '');
+include 'pagemake2.php';
+pagemake($html, $head);
 ?>

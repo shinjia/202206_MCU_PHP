@@ -5,7 +5,7 @@ define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 define('DB_DATABASE', 'class');
 
-define('SET_CHARACTER', 'set character set utf8');   // utf8或big5或此列加註移除
+define('SET_CHARACTER', 'set character set utf8mb4');   // utf8或big5或此列加註移除
 define('CHARSET', 'utf8');   // utf8或此列加註移除 (此用於PHP 5.0.5以上)
 
 define('ERROR_CONNECT',  'Cannot connect server');  // 無法連接伺服器
@@ -21,7 +21,7 @@ define('DB_SOURCE', 'mysql:host='.DB_SERVERIP.';dbname='.DB_DATABASE);
 function db_open()
 {
    try {
-      $pdo = new PDO(DB_SOURCE, DB_USERNAME, DB_PASSWORD);   
+      $pdo = new PDO(DB_SOURCE, DB_USERNAME, DB_PASSWORD);
       if(defined('SET_CHARACTER')) $pdo->query(SET_CHARACTER);
    } catch (PDOException $e) { die("Error!: " . $e->getMessage()); } 
       

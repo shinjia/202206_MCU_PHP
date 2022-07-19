@@ -65,6 +65,6 @@ $html = <<< HEREDOC
 {$data}
 HEREDOC;
 
-include 'pagemake.php';
+include 'pagemake2.php';
 pagemake($html, '');
 ?>
