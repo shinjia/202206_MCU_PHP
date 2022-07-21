@@ -1,0 +1,4 @@
+2022-07-21 16:35:07,ERROR_QUERY,SQLSTATE[42S02]: Base table or view not found: 1146 Table 'class.person' doesn't exist
+2022-07-21 16:35:51,ERROR_QUERY,SQLSTATE[42S02]: Base table or view not found: 1146 Table 'class.person' doesn't exist
+2022-07-21 16:35:53,ERROR_QUERY,SQLSTATE[42S02]: Base table or view not found: 1146 Table 'class.person' doesn't exist
+2022-07-21 16:35:53,ERROR_QUERY,SQLSTATE[42S02]: Base table or view not found: 1146 Table 'class.person' doesn't exist

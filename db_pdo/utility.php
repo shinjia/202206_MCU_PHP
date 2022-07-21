@@ -1,9 +1,20 @@
 <?php
 /* db_pdo v1.0  @Shinjia  #2022/07/17 */
 
+function logger($type='', $ext='')
+{
+    $now = date('Y-m-d H:i:s', time());
+
+    $file_log = 'log.txt';
+    $data = $now . ',' . $type . ',' . $ext . "\n";
+    file_put_contents($file_log, $data, FILE_APPEND);
+}
+
+
 function error_message($type='', $ext='')
 {
     $is_debug = true;
+    $is_log = true;
 
     $a_errmsg = array(
     'ERROR_QUERY' => '資料庫執行發生錯誤',
@@ -20,8 +31,14 @@ function error_message($type='', $ext='')
     $ret_str .= '<p class="center">' . $msg . '</p>';
     $ret_str .= ($is_debug) ? ('<p class="center">' . $ext . '</p>') : '';
 
+    if($is_log)
+    {
+        logger('ERROR_QUERY', $ext);
+    }
+
     return $ret_str;
 }
+
 
 
 function pagination($total_page, $page, $nump=10)

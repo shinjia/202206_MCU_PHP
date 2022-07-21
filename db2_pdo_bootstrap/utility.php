@@ -1,21 +1,9 @@
 <?php
-/* db2_pdo v1.0  @Shinjia  #2022/07/19 */
-
-
-function log($type='', $ext='')
-{
-    $now = date('Y-m-d H:i:s', time());
-
-    $file_log = 'log.txt';
-    $data = $now . ',', $type . ',' . ext;
-    file_put_contents($file_log, $data);
-}
-
+/* db_pdo v1.0  @Shinjia  #2022/07/17 */
 
 function error_message($type='', $ext='')
 {
     $is_debug = true;
-    $is_log = true;
 
     $a_errmsg = array(
     'ERROR_QUERY' => '資料庫執行發生錯誤',
@@ -31,11 +19,6 @@ function error_message($type='', $ext='')
     $ret_str  = '<h2>錯誤警告</h2>';
     $ret_str .= '<p class="center">' . $msg . '</p>';
     $ret_str .= ($is_debug) ? ('<p class="center">' . $ext . '</p>') : '';
-
-    if($is_log)
-    {
-        log('ERROR_QUERY', $ext);
-    }
 
     return $ret_str;
 }

@@ -1,5 +1,5 @@
 <?php
-/* db2_pdo v1.0  @Shinjia  #2022/07/19 */
+/* db_pdo v1.0  @Shinjia  #2022/07/17 */
 
 // 含分頁之資料列表
 
@@ -32,7 +32,10 @@ $pdo = db_open();
 
 // SQL 語法：取得分頁所需之資訊 (總筆數、總頁數、擷取記錄之起始位置)
 $sqlstr = "SELECT count(*) as total_rec FROM person ";
+
 $sth = $pdo->prepare($sqlstr);
+
+// 執行 SQL
 try {
     $sth->execute();
     if($row = $sth->fetch(PDO::FETCH_ASSOC)) {
@@ -51,12 +54,14 @@ if($page>$total_page && $total_page>0) {
 }
 
 // SQL 語法：分頁資訊
-$sqlstr = "SELECT * FROM person ";
+$sqlstr = "SELECT * FROM person "; 
 $sqlstr .= " LIMIT " . (($page-1)*$nump) . "," . $nump;
+
+$sth = $pdo->prepare($sqlstr);
 
 // 執行 SQL
 try { 
-    $sth = $pdo->query($sqlstr);
+    $sth->execute();
 
     $cnt = (($page-1)*$nump);  // 注意分頁的起始順序
     $data = '';
@@ -89,15 +94,15 @@ try {
             <th>{$cnt}</th>
             <td>{$uid}</td>
             <td>{$usercode}</td>
-            <td><a href="{$lnk_display}">{$username}</a></td>
+            <td>{$username}</td>
             <td>{$address}</td>
             <td>{$birthday}</td>
             <td>{$height}</td>
             <td>{$weight}</td>
             <td>{$remark}</td>
-            <td><a href="{$lnk_display}">詳細</a></td>
-            <td><a href="{$lnk_edit}">修改</a></td>
-            <td><a href="{$lnk_delete}" onClick="return confirm('確定要刪除嗎？');">刪除</a></td>
+            <td><a href="{$lnk_display}" class="btn btn-sm btn-info">詳細</a></td>
+            <td><a href="{$lnk_edit}" class="btn btn-sm btn-success">修改</a></td>
+            <td><a href="{$lnk_delete}"  class="btn btn-sm btn-danger" onClick="return confirm('確定要刪除嗎？');">刪除</a></td>
         </tr>
 HEREDOC;
     }
@@ -111,8 +116,8 @@ HEREDOC;
     $ihc_content = <<< HEREDOC
     <h3>共有 $total_rec 筆記錄</h2>
     {$ihc_navigator}
-    <table border="1" class="table">   
-        <tr>
+    <table class="table table-hover">
+        <tr class="table-primary">
             <th>順序</th>
             <th>uid</th>
             <th>代碼</th>
@@ -122,7 +127,7 @@ HEREDOC;
             <th>身高</th>
             <th>體重</th>
             <th>備註</th>
-            <th colspan="3" align="center"><a href="{$lnk_add}">新增記錄</a></th>
+            <th colspan="3" align="center"><a href="{$lnk_add}" class="btn btn-primary">新增記錄</a></th>
         </tr>
     {$data}
     </table>

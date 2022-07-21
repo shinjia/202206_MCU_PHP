@@ -8,7 +8,7 @@ function pagemake($content='', $head='')
 <html>
 <head>
 <meta charset="UTF-8">
-<title>db_pdo2</title>
+<title>db2_pdo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="style.css" rel="stylesheet">
 {$head}

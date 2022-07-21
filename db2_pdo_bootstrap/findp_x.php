@@ -1,23 +1,17 @@
 <?php
-/* db2_pdo v1.0  @Shinjia  #2022/07/19 */
+/* db_pdo v1.0  @Shinjia  #2022/07/17 */
 
 // 含分頁之資料列表
 
 include 'config.php';
 include 'utility.php';
 
+// 可接收 GET 及 POST 傳入
+$key = isset($_POST['key']) ? $_POST['key'] : (isset($_GET['key'])?$_GET['key']:'^$!@#');
+
 // 頁碼參數
 $page = isset($_GET['page']) ? $_GET['page'] : 1;   // 目前的頁碼
 $nump = isset($_GET['nump']) ? $_GET['nump'] : 10;   // 每頁的筆數
-
-// 增加傳入 uid，把該筆記錄高亮標示
-$uid_highlight = isset($_GET['uid']) ? $_GET['uid'] : '';
-
-// 參數安全檢查
-$page = intval($page);  // 轉為整數
-$nump = intval($nump);  // 轉為整數
-$page = ($page<=0) ? 1 : $page;  // 不可為零
-$nump = ($nump<=0) ? 10 : $nump;  // 不可為零
 
 // 網頁內容預設
 $ihc_content = '';
@@ -30,9 +24,18 @@ $total_page = 0;
 // 連接資料庫
 $pdo = db_open();
 
+// SQL 語法：條件
+$sql_where = " WHERE username LIKE ? ";  // 依條件修改
+$keyword = '%' . $key . '%';  // 注意
+
 // SQL 語法：取得分頁所需之資訊 (總筆數、總頁數、擷取記錄之起始位置)
 $sqlstr = "SELECT count(*) as total_rec FROM person ";
+$sqlstr .= $sql_where;
+
 $sth = $pdo->prepare($sqlstr);
+$sth->bindValue(1, $keyword, PDO::PARAM_STR);
+
+// 執行 SQL
 try {
     $sth->execute();
     if($row = $sth->fetch(PDO::FETCH_ASSOC)) {
@@ -45,18 +48,19 @@ catch(PDOException $e) {
     $ihc_error = error_message(ERROR_QUERY, $e->getMessage());
 }
 
-// 頁數超過時，維持在最後一頁
-if($page>$total_page && $total_page>0) {
-    $page = $total_page;
-}
-
 // SQL 語法：分頁資訊
 $sqlstr = "SELECT * FROM person ";
+$sqlstr .= $sql_where;
 $sqlstr .= " LIMIT " . (($page-1)*$nump) . "," . $nump;
+
+$sth = $pdo->prepare($sqlstr);
+
+$sth = $pdo->prepare($sqlstr);
+$sth->bindValue(1, $keyword, PDO::PARAM_STR);
 
 // 執行 SQL
 try { 
-    $sth = $pdo->query($sqlstr);
+    $sth->execute();
 
     $cnt = (($page-1)*$nump);  // 注意分頁的起始順序
     $data = '';
@@ -72,24 +76,16 @@ try {
     
         $cnt++;
 
-        // 指定的 uid 記錄高亮顯示
-        $str_highlight = '';
-        if($uid==$uid_highlight)
-        {
-            $str_highlight = 'class="hightlight"';
-        }
-
         // 超連結
-        $lnk_display = 'display.php?uid=' . $uid . '&page=' . $page . '&nump=' . $nump;
-        $lnk_edit = 'edit.php?uid=' . $uid . '&page=' . $page . '&nump=' . $nump;
-        $lnk_delete = 'delete.php?uid=' . $uid . '&page=' . $page . '&nump=' . $nump;
+        $lnk_display = 'display.php?uid=' . $uid;
+        $lnk_edit = 'edit.php?uid=' . $uid;
+        $lnk_delete = 'delete.php?uid=' . $uid;
 
         $data .= <<< HEREDOC
-            <tr {$str_highlight}>
             <th>{$cnt}</th>
             <td>{$uid}</td>
             <td>{$usercode}</td>
-            <td><a href="{$lnk_display}">{$username}</a></td>
+            <td>{$username}</td>
             <td>{$address}</td>
             <td>{$birthday}</td>
             <td>{$height}</td>
@@ -103,10 +99,11 @@ HEREDOC;
     }
 
     // 分頁導覽列
-    $ihc_navigator = pagination($total_page, $page, $nump);
+    $a_ext = array(
+        "key"=>$key
+    );
+    $ihc_navigator = pagination_ext($total_page, $page, $nump, $a_ext);
     
-    $lnk_add = 'add.php?page=' . $page . '&nump=' . $nump;
-
     //網頁顯示
     $ihc_content = <<< HEREDOC
     <h3>共有 $total_rec 筆記錄</h2>
@@ -122,7 +119,7 @@ HEREDOC;
             <th>身高</th>
             <th>體重</th>
             <th>備註</th>
-            <th colspan="3" align="center"><a href="{$lnk_add}">新增記錄</a></th>
+            <th colspan="3" align="center"><a href="add.php">新增記錄</a></th>
         </tr>
     {$data}
     </table>
@@ -140,7 +137,7 @@ db_close();
 
 
 $html = <<< HEREDOC
-<h2>資料列表 (分頁)</h2>
+<h2>資料列表 (查詢分頁)</h2>
 {$ihc_content}
 {$ihc_error}
 HEREDOC;
