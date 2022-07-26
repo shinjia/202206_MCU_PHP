@@ -1,0 +1,29 @@
+
+
+BODY {
+	SCROLLBAR-FACE-COLOR: #ffffff; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #ffffff; SCROLLBAR-3DLIGHT-COLOR: #d2e8b5; SCROLLBAR-ARROW-COLOR: #d2e8b5; SCROLLBAR-TRACK-COLOR: #ffffff; SCROLLBAR-DARKSHADOW-COLOR: #ffffff;
+	FONT-SIZE: 9pt; BACKGROUND-ATTACHMENT: fixed; BACKGROUND-IMAGE: CURSOR: default;  TEXT-DECORATION: none;background-color:#ffffff;FONT-SIZE: 9pt; COLOR: #999900; FONT-FAMILY: "Comic Sans MS"
+}
+
+
+table {
+	BORDER-RIGHT: #d2e8b5 1px dotted; BORDER-TOP: #d2e8b5 1px dotted; BORDER-LEFT: #d2e8b5 1px dotted; COLOR: #999900; BORDER-BOTTOM: #d2e8b5 1px dotted
+}
+
+TD {
+	FONT-SIZE: 9pt; COLOR: #999900; FONT-FAMILY: "Comic Sans MS"
+}
+
+
+A:link {
+	COLOR: #cc9999; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #cccc99; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #999966; TEXT-DECORATION: none
+}
+A:hover {
+	CURSOR: crosshair; BACKGROUND-COLOR: #f3fede; TEXT-DECORATION: none
+}

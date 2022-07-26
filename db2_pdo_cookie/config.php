@@ -1,5 +1,5 @@
 <?php
-/* my_form v0.1  @Shinjia  #2022/07/21 */
+/* db2_pdo_cookie v1.0  @Shinjia  #2022/07/22 */
 
 // 資料庫連接的重要參數
 define('DB_SERVERIP', 'localhost');

@@ -1,0 +1,28 @@
+body {margin:6px; font:normal 10pt verdana;
+    SCROLLBAR-FACE-COLOR: #eeffee;
+    SCROLLBAR-HIGHLIGHT-COLOR: #639A63;;
+    SCROLLBAR-SHADOW-COLOR: #639A63;;
+    SCROLLBAR-3DLIGHT-COLOR: #ffffff;
+    SCROLLBAR-ARROW-COLOR: #669966;
+    SCROLLBAR-TRACK-COLOR: #ffffff;
+    SCROLLBAR-DARKSHADOW-COLOR: #ffffff;
+    SCROLLBAR-BASE-COLOR: #639A63;;
+    color:#316531;
+    background:#ffffff;
+}
+
+h1 {font:bold 16pt; margin-top:8pt; margin-bottom:8pt;}
+h2 {font:bold 14pt; margin-top:7pt; margin-bottom:7pt;}
+h3 {font:bold 12pt; margin-top:6pt; margin-bottom:6pt;}
+
+
+table {border:#316531 1px solid;}
+tr {}
+th  {background:#316531; color:#eeffee; }
+td     {background:#93CA93;}
+
+a:link {color:#639A63; text-decoration:none;}
+a:visited {}
+a:hover {color:#63c963; text-decoration:underline;}
+a:active {text-decoration:underline;}
+

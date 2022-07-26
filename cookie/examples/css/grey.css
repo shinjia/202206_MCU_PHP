@@ -1,0 +1,28 @@
+body {margin:6px; font:normal 10pt Georgia;
+    SCROLLBAR-FACE-COLOR: #ffffff; 
+    SCROLLBAR-HIGHLIGHT-COLOR: #999999; 
+    SCROLLBAR-SHADOW-COLOR: #999999; 
+    SCROLLBAR-3DLIGHT-COLOR: #ffffff; 
+    SCROLLBAR-ARROW-COLOR: #333333; 
+    SCROLLBAR-TRACK-COLOR: #ffffff; 
+    SCROLLBAR-DARKSHADOW-COLOR: #ffffff; 
+    SCROLLBAR-BASE-COLOR: #999999;     
+    color:#000000;
+    background:#ffffff;          
+}
+
+h1 {font:bold 16pt verdana; margin-top:8pt; margin-bottom:8pt;}
+h2 {font:bold 14pt verdana; margin-top:7pt; margin-bottom:7pt;}
+h3 {font:bold 12pt verdana; margin-top:6pt; margin-bottom:6pt;}
+
+
+table  {border:#000000 1px solid;}
+tr  {}
+th  {background:#666666; color:#ffffff; font-weight:bold;}
+td     {background:#CCCCCC; font-size:10pt; font-family:Georgia;}
+
+a:link {color:#999999;text-decoration:none;}
+a:visited {}
+a:hover {text-decoration:underline;}
+a:active {text-decoration:underline;}
+

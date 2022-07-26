@@ -1,0 +1,51 @@
+body {
+	margin:6px;
+	font:normal 10pt Georgia;
+	SCROLLBAR-FACE-COLOR: #eeeeff;
+	SCROLLBAR-HIGHLIGHT-COLOR: #9999aa;
+	SCROLLBAR-SHADOW-COLOR: #9999aa;
+	SCROLLBAR-3DLIGHT-COLOR: #ffffff;
+	SCROLLBAR-ARROW-COLOR: #333366;
+	SCROLLBAR-TRACK-COLOR: #ffffff;
+	SCROLLBAR-DARKSHADOW-COLOR: #ffffff;
+	SCROLLBAR-BASE-COLOR: #9999aa;
+	color:#000066;
+	background-color: #FF99CC;
+}
+
+h1 {
+	margin-top:8pt;
+	margin-bottom:8pt;
+	font-family: verdana;
+	font-size: 16pt;
+	font-weight: bold;
+	color: #990000;
+}
+h2 {
+	margin-top:7pt;
+	margin-bottom:7pt;
+	font-family: verdana;
+	font-size: 14pt;
+	font-weight: bold;
+	color: #FF6600;
+}
+h3 {
+	margin-top:6pt;
+	margin-bottom:6pt;
+	font-family: verdana;
+	font-size: 12pt;
+	font-weight: bold;
+	color: #FF33CC;
+}
+
+
+table {border:#FF6699 1px solid;}
+tr  {}
+th  {background:#FF6699; color:#eeeeff; font-weight:bold;}
+td {background:#FFddee;}
+
+a:link {color:#333399; text-decoration:none;}
+a:visited {}
+a:hover {color:#6666cc; text-decoration:underline;}
+a:active {text-decoration:underline;}
+
