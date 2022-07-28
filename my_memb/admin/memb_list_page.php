@@ -6,19 +6,17 @@ include '../common/config.php';
 include '../common/utility.php';
 include '../common/define.php';
 
-$ss_usertype = isset($_SESSION[SYSTEM_CODE.'usertype']) ? $_SESSION[SYSTEM_CODE.'usertype'] : '';
-$ss_usercode = isset($_SESSION[SYSTEM_CODE.'usercode']) ? $_SESSION[SYSTEM_CODE.'usercode'] : '';
+$ss_usertype = isset($_SESSION[DEF_SESSION_USERTYPE]) ? $_SESSION[DEF_SESSION_USERTYPE] : '';
+$ss_usercode = isset($_SESSION[DEF_SESSION_USERCODE]) ? $_SESSION[DEF_SESSION_USERCODE] : '';
 
-if($ss_usertype!=DEF_LOGIN_ADMIN)
-{
+if($ss_usertype!=DEF_LOGIN_ADMIN) {
     header('Location: login_error.php');
     exit;
 }
 
+//==============================================================================
 
 // 含分頁之資料列表
-
-
 // 頁碼參數
 $page = isset($_GET['page']) ? $_GET['page'] : 1;   // 目前的頁碼
 $nump = isset($_GET['nump']) ? $_GET['nump'] : 10;   // 每頁的筆數
@@ -107,6 +105,7 @@ try {
         $lnk_display = 'memb_display.php?uid=' . $uid . '&page=' . $page . '&nump=' . $nump;
         $lnk_edit = 'memb_edit.php?uid=' . $uid . '&page=' . $page . '&nump=' . $nump;
         $lnk_delete = 'memb_delete.php?uid=' . $uid . '&page=' . $page . '&nump=' . $nump;
+        $lnk_verify = 'memb_verify_test.php?uid=' . $uid;
 
         $data .= <<< HEREDOC
             <tr {$str_highlight}>
@@ -114,20 +113,21 @@ try {
             <td>{$uid}</td>
             <td>{$membcode}</td>
             <td>{$membname}</td>
-            <td>{$membpass}</td>
-            <td>{$membtele}</td>
-            <td>{$membmail}</td>
-            <td>{$membinfo}</td>
-            <td>{$memblike}</td>
-            <td>{$membpict}</td>
-            <td>{$membpset}</td>
+            <!--
+                <td>{$membpass}</td>
+                <td>{$membtele}</td>
+                <td>{$membmail}</td>
+                <td>{$membinfo}</td>
+                <td>{$memblike}</td>
+                <td>{$membpict}</td>
+                <td>{$membpset}</td>
+            -->
             <td>{$membtype}</td>
-            <td>{$googleid}</td>
             <td>{$status}</td>
-            <td>{$remark}</td>
             <td><a href="{$lnk_display}">詳細</a></td>
             <td><a href="{$lnk_edit}">修改</a></td>
             <td><a href="{$lnk_delete}" onClick="return confirm('確定要刪除嗎？');">刪除</a></td>
+            <td><a href="{$lnk_verify}">驗証測試</a></td>
         </tr>
 HEREDOC;
     }
@@ -147,18 +147,18 @@ HEREDOC;
             <th>uid</th>
             <th>帳號</th>
             <th>姓名</th>
-            <th>密碼</th>
-            <th>電話</th>
-            <th>信箱</th>
-            <th>資訊</th>
-            <th>興趣</th>
-            <th>圖片</th>
-            <th>圖檔</th>
+            <!--
+                <th>密碼</th>
+                <th>電話</th>
+                <th>信箱</th>
+                <th>資訊</th>
+                <th>興趣</th>
+                <th>圖片</th>
+                <th>圖檔</th>
+            -->
             <th>類別</th>
-            <th>Google ID</th>
             <th>狀態</th>
-            <th>備註</th>
-            <th colspan="3" align="center"><a href="{$lnk_add}">新增記錄</a></th>
+            <th colspan="4" align="center"><a href="{$lnk_add}">新增記錄</a></th>
         </tr>
     {$data}
     </table>

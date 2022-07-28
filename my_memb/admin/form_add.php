@@ -6,14 +6,15 @@ include '../common/config.php';
 include '../common/utility.php';
 include '../common/define.php';
 
-$ss_usertype = isset($_SESSION[SYSTEM_CODE.'usertype']) ? $_SESSION[SYSTEM_CODE.'usertype'] : '';
-$ss_usercode = isset($_SESSION[SYSTEM_CODE.'usercode']) ? $_SESSION[SYSTEM_CODE.'usercode'] : '';
+$ss_usertype = isset($_SESSION[DEF_SESSION_USERTYPE]) ? $_SESSION[DEF_SESSION_USERTYPE] : '';
+$ss_usercode = isset($_SESSION[DEF_SESSION_USERCODE]) ? $_SESSION[DEF_SESSION_USERCODE] : '';
 
-if($ss_usertype!=DEF_LOGIN_ADMIN)
-{
+if($ss_usertype!=DEF_LOGIN_ADMIN) {
     header('Location: login_error.php');
     exit;
 }
+
+//==============================================================================
 
 
 

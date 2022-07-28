@@ -6,15 +6,15 @@ include '../common/config.php';
 include '../common/utility.php';
 include '../common/define.php';
 
-$ss_usertype = isset($_SESSION[SYSTEM_CODE.'usertype']) ? $_SESSION[SYSTEM_CODE.'usertype'] : '';
-$ss_usercode = isset($_SESSION[SYSTEM_CODE.'usercode']) ? $_SESSION[SYSTEM_CODE.'usercode'] : '';
+$ss_usertype = isset($_SESSION[DEF_SESSION_USERTYPE]) ? $_SESSION[DEF_SESSION_USERTYPE] : '';
+$ss_usercode = isset($_SESSION[DEF_SESSION_USERCODE]) ? $_SESSION[DEF_SESSION_USERCODE] : '';
 
-if($ss_usertype!=DEF_LOGIN_ADMIN)
-{
+if($ss_usertype!=DEF_LOGIN_ADMIN) {
     header('Location: login_error.php');
     exit;
 }
 
+//==============================================================================
 
 
 // 接收傳入變數
@@ -57,20 +57,20 @@ $sth->bindParam(':uid'     , $uid     , PDO::PARAM_INT);
 
 // 執行 SQL
 try { 
-   $sth->execute();
+    $sth->execute();
 
-   $lnk_display = "form_display.php?uid=" . $uid;
-   header('Location: ' . $lnk_display);
+    $lnk_display = "form_display.php?uid=" . $uid;
+    header('Location: ' . $lnk_display);
 }
 catch(PDOException $e) {
-   // db_error(ERROR_QUERY, $e->getMessage());
-   $ihc_error = error_message('ERROR_QUERY', $e->getMessage());
-   
-   $html = <<< HEREDOC
-   {$ihc_error}
+    // db_error(ERROR_QUERY, $e->getMessage());
+    $ihc_error = error_message('ERROR_QUERY', $e->getMessage());
+    
+    $html = <<< HEREDOC
+    {$ihc_error}
 HEREDOC;
-   include 'pagemake.php';
-   pagemake($html);
+    include 'pagemake.php';
+    pagemake($html);
 }
 
 db_close();

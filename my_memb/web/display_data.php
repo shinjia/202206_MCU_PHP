@@ -1,5 +1,5 @@
 <?php
-/* my_form v0.1  @Shinjia  #2022/07/21 */
+/* my_form v0.1  @Shinjia  #2022/07/27 */
 session_start();
 
 include '../common/config.php';
@@ -9,17 +9,17 @@ include '../common/define.php';
 $ss_usertype = isset($_SESSION[DEF_SESSION_USERTYPE]) ? $_SESSION[DEF_SESSION_USERTYPE] : '';
 $ss_usercode = isset($_SESSION[DEF_SESSION_USERCODE]) ? $_SESSION[DEF_SESSION_USERCODE] : '';
 
-if($ss_usertype!=DEF_LOGIN_ADMIN) {
+$a_valid_usertype = array(DEF_LOGIN_MEMBER, DEF_LOGIN_VIP);  // 可以使用本網頁的權限
+
+if(!in_array($ss_usertype, $a_valid_usertype)) {
     header('Location: login_error.php');
     exit;
 }
 
 //==============================================================================
 
-
-
-// 接收傳入變數
-$uid = isset($_GET['uid']) ? $_GET['uid'] : 0;
+// 指定照片的資料夾
+$path = DEF_PHOTO_PATH;
 
 // 網頁內容預設
 $ihc_content = '';
@@ -29,10 +29,10 @@ $ihc_error = '';
 $pdo = db_open();
 
 // SQL 語法
-$sqlstr = "SELECT * FROM memb WHERE uid=?";
+$sqlstr = "SELECT * FROM memb WHERE membcode=? ";
 
 $sth = $pdo->prepare($sqlstr);
-$sth->bindValue(1, $uid, PDO::PARAM_INT);
+$sth->bindValue(1, $ss_usercode, PDO::PARAM_STR);
 
 // 執行 SQL
 try {
@@ -54,6 +54,19 @@ try {
         $status   = html_encode($row['status']);
         $remark   = html_encode($row['remark']);
 
+        // 處理欄位：照片
+        // 注意：圖片顯示在網頁上，由圖檔名網址有可能洩露網站的一些資訊
+        $img_photo = $path . $membpict;
+        if(!file_exists($img_photo) || $membpict=='') {
+            $img_photo = $path . '00_default.png';
+        }
+        $img_photo .= '?t=' . uniqid();  // 強制每次都會重新讀取
+
+        $str_photo = '';
+        $str_photo .= '<a href="' . $img_photo . '" target="_blank">';
+        $str_photo .= '<img src="' . $img_photo . '" style="width:200px;">';            
+        $str_photo .= '</a>';
+
         $data = <<< HEREDOC
         <table border="1" class="table">
             <tr><th>帳號</th><td>{$membcode}</td></tr>
@@ -70,6 +83,7 @@ try {
             <tr><th>狀態</th><td>{$status}</td></tr>
             <tr><th>備註</th><td>{$remark}</td></tr>
         </table>
+        {$str_photo}
 HEREDOC;
 
         // 網頁內容

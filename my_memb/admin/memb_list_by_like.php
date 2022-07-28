@@ -16,6 +16,9 @@ if($ss_usertype!=DEF_LOGIN_ADMIN) {
 
 //==============================================================================
 
+// 接收傳入變數
+$key = isset($_GET['key']) ? $_GET['key'] : '';
+
 // 網頁內容預設
 $ihc_content = '';
 $ihc_error = '';
@@ -27,43 +30,46 @@ $total_rec = 0;
 $pdo = db_open();
 
 // SQL 語法
-$sqlstr = "SELECT * FROM form ";
+$sqlstr = "SELECT * FROM memb ";
+$sqlstr .= "WHERE memblike LIKE ? ";
+
+$keyword = '%' . $key . '%';
+
+$sth = $pdo->prepare($sqlstr);
+$sth->bindValue(1, $keyword, PDO::PARAM_STR);
 
 // 執行 SQL
 try { 
-    $sth = $pdo->query($sqlstr);
+    $sth->execute();
 
     $total_rec = $sth->rowCount();
+
     $cnt = 0;
     $data = '';
     while($row = $sth->fetch(PDO::FETCH_ASSOC)) {
         $uid = $row['uid'];
-        $formcode = html_encode($row['formcode']);
-        $formname = html_encode($row['formname']);
-        $formdate = html_encode($row['formdate']);
-        $formfld1 = html_encode($row['formfld1']);
-        $formfld2 = html_encode($row['formfld2']);
-        $forminfo = html_encode($row['forminfo']);
         $membcode = html_encode($row['membcode']);
-        $remark   = html_encode($row['remark']);
+        $membname = html_encode($row['membname']);
+        $memblike = html_encode($row['memblike']);
     
-        $cnt++;
+        // 讓每一個興趣都有超連結
+        $str_like = '';
+        $ary = explode(',', $memblike);
+        foreach($ary as $value) {
+            $one = trim($value);
+            $lnk = 'memb_list_by_like.php?key=' . $one;
+            
+            $str_like .= '<a href="' . $lnk . '">' . $one .'</a> ';
+        }
 
         $data .= <<< HEREDOC
         <tr>
             <th>{$cnt}</th>
             <td>{$uid}</td>
-            <td>{$formcode}</td>
-            <td>{$formname}</td>
-            <td>{$formdate}</td>
-            <td>{$formfld1}</td>
-            <td>{$formfld2}</td>
-            <td>{$forminfo}</td>
             <td>{$membcode}</td>
-            <td>{$remark}</td>
-            <td><a href="form_display.php?uid={$uid}">詳細</a></td>
-            <td><a href="form_edit.php?uid={$uid}">修改</a></td>
-            <td><a href="form_delete.php?uid={$uid}" onClick="return confirm('確定要刪除嗎？');">刪除</a></td>
+            <td>{$membname}</td>
+            <td>{$memblike}</td>
+            <td>{$str_like}</td>
         </tr>
 HEREDOC;
     }
@@ -75,15 +81,9 @@ HEREDOC;
         <tr>
             <th>順序</th>
             <th>uid</th>
-            <th>代碼</th>
-            <th>主旨</th>
-            <th>日期</th>
-            <th>欄一</th>
-            <th>欄二</th>
-            <th>更多</th>
-            <th>會員代號</th>
-            <th>備註</th>
-            <th colspan="3" align="center"><a href="form_add.php">新增記錄</a></th>
+            <th>帳號</th>
+            <th>姓名</th>
+            <th>興趣</th>
         </tr>
         {$data}
     </table>
@@ -101,7 +101,7 @@ db_close();
 
 
 $html = <<< HEREDOC
-<h2>資料列表 (全部)</h2>
+<h2>興趣含『{$key}』</h2>
 {$ihc_content}
 {$ihc_error}
 HEREDOC;

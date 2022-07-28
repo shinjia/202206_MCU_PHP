@@ -46,12 +46,12 @@ CREATE TABLE form
 
 // 如要預先新增記錄，定義於此
 $a_record[] = "INSERT INTO memb(membcode, membname, membpass, membtele, membmail, membinfo, memblike, membpict, membpset, membtype, googleid, status, remark) VALUES 
-('allen', 'Allen', '1234', '0937111111', 'aaa@gmail.com', '1111', '音樂,運動', 'xx.jpg', 'allen', 'MEMBER', '', '', ''),
-('bruce', 'Bruce', '1234', '0937222222', 'bbb@gmail.com', '2222', '運動,美食', 'xx.jpg', 'bruce', 'MEMBER', '', '', '') ";  // 注意最後的符號
+('allen', 'Allen', 'f418d011e84f58e6210ca401253a7597', '0937111111', 'aaa@gmail.com', '1111', '音樂,運動', '', 'allen', 'MEM_MEMBER', '', '', '預設登入密碼是 11111@Allen'),
+('bruce', 'Bruce', '0f0c38b7346182849e0f51df73234647', '0937222222', 'bbb@gmail.com', '2222', '運動,美食', '', 'bruce', 'MEM_VIP', '', '', '預設登入密碼是 22222@Bruce') ";  // 注意最後的符號
 
 $a_record[] = "INSERT INTO form(formcode, formname, formdate, formfld1, formfld2, forminfo, membcode, remark) VALUES 
 ('2022070001', '閱覽室使用申請', '2022/07/01', 'f1', 'f2', '更多說明事項', 'allen', '' ),
-('2022070002', 'XXXXXXXXX申請', '2022/07/03', 'f1', 'f2', '更多說明事項', 'allen', '' ),
+('2022070002', '健身房使用申請', '2022/07/03', 'f1', 'f2', '更多說明事項', 'allen', '' ),
 ('2022070003', '閱覽室使用申請', '2022/07/05', 'f1', 'f2', '更多說明事項', 'bruce', '' ) ";  // 注意最後的符號
 
 

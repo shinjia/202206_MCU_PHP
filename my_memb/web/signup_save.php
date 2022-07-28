@@ -58,7 +58,7 @@ else {
     // SQL 語法
     $sqlstr = "INSERT INTO memb(membcode, membname, membmail, membtype) VALUES (:membcode, :membname, :membmail, :membtype)";
     
-    $membtype = 'APPLY';  // 新申請
+    $membtype = DEF_LOGIN_APPLY;  // 新申請
     
     $sth = $pdo->prepare($sqlstr);
     $sth->bindParam(':membcode', $membcode, PDO::PARAM_STR);

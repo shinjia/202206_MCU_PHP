@@ -1,5 +1,5 @@
 <?php
-/* my_form v0.1  @Shinjia  #2022/07/21 */
+/* my_form v0.1  @Shinjia  #2022/07/27 */
 session_start();
 
 include '../common/config.php';
@@ -15,7 +15,6 @@ if($ss_usertype!=DEF_LOGIN_ADMIN) {
 }
 
 //==============================================================================
-
 
 
 // 接收傳入變數
@@ -43,32 +42,23 @@ try {
         $membcode = html_encode($row['membcode']);
         $membname = html_encode($row['membname']);
         $membpass = html_encode($row['membpass']);
-        $membtele = html_encode($row['membtele']);
         $membmail = html_encode($row['membmail']);
-        $membinfo = html_encode($row['membinfo']);
-        $memblike = html_encode($row['memblike']);
-        $membpict = html_encode($row['membpict']);
-        $membpset = html_encode($row['membpset']);
         $membtype = html_encode($row['membtype']);
-        $googleid = html_encode($row['googleid']);
-        $status   = html_encode($row['status']);
-        $remark   = html_encode($row['remark']);
+
+        // 確認信件中的超連結
+        $title = '網站會員申請驗証';
+        $code = $membcode;
+        $chk = md5(SYSTEM_CODE.$code);
+        $link = '../web/signup_verify.php?code=' . $code . '&chk=' . $chk;
 
         $data = <<< HEREDOC
         <table border="1" class="table">
             <tr><th>帳號</th><td>{$membcode}</td></tr>
             <tr><th>姓名</th><td>{$membname}</td></tr>
             <tr><th>密碼</th><td>{$membpass}</td></tr>
-            <tr><th>電話</th><td>{$membtele}</td></tr>
             <tr><th>信箱</th><td>{$membmail}</td></tr>
-            <tr><th>資料</th><td>{$membinfo}</td></tr>
-            <tr><th>興趣</th><td>{$memblike}</td></tr>
-            <tr><th>圖片</th><td>{$membpict}</td></tr>
-            <tr><th>圖集</th><td>{$membpset}</td></tr>
             <tr><th>類別</th><td>{$membtype}</td></tr>
-            <tr><th>Google ID</th><td>{$googleid}</td></tr>
-            <tr><th>狀態</th><td>{$status}</td></tr>
-            <tr><th>備註</th><td>{$remark}</td></tr>
+            <tr><th>link</th><td><a href="{$link}">{$link}</a></td></tr>
         </table>
 HEREDOC;
 

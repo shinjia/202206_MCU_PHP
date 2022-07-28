@@ -6,14 +6,15 @@ include '../common/config.php';
 include '../common/utility.php';
 include '../common/define.php';
 
-$ss_usertype = isset($_SESSION[SYSTEM_CODE.'usertype']) ? $_SESSION[SYSTEM_CODE.'usertype'] : '';
-$ss_usercode = isset($_SESSION[SYSTEM_CODE.'usercode']) ? $_SESSION[SYSTEM_CODE.'usercode'] : '';
+$ss_usertype = isset($_SESSION[DEF_SESSION_USERTYPE]) ? $_SESSION[DEF_SESSION_USERTYPE] : '';
+$ss_usercode = isset($_SESSION[DEF_SESSION_USERCODE]) ? $_SESSION[DEF_SESSION_USERCODE] : '';
 
-if($ss_usertype!=DEF_LOGIN_ADMIN)
-{
+if($ss_usertype!=DEF_LOGIN_ADMIN) {
     header('Location: login_error.php');
     exit;
 }
+
+//==============================================================================
 
 
 // 接收傳入變數
@@ -43,22 +44,22 @@ $sth->bindParam(':membcode', $membcode, PDO::PARAM_STR);
 $sth->bindParam(':remark'  , $remark  , PDO::PARAM_STR);
 
 // 執行 SQL
-try { 
-   $sth->execute();
+try {
+    $sth->execute();
 
-   $new_uid = $pdo->lastInsertId();    // 傳回剛才新增記錄的 auto_increment 的欄位值
-   $lnk_display = "form_display.php?uid=" . $new_uid;
-   header('Location: ' . $lnk_display);
+    $new_uid = $pdo->lastInsertId();    // 傳回剛才新增記錄的 auto_increment 的欄位值
+    $lnk_display = "form_display.php?uid=" . $new_uid;
+    header('Location: ' . $lnk_display);
 }
 catch(PDOException $e) {
    // db_error(ERROR_QUERY, $e->getMessage());
-   $ihc_error = error_message('ERROR_QUERY', $e->getMessage());
-   
-   $html = <<< HEREDOC
-   {$ihc_error}
+    $ihc_error = error_message('ERROR_QUERY', $e->getMessage());
+    
+    $html = <<< HEREDOC
+    {$ihc_error}
 HEREDOC;
-   include 'pagemake.php';
-   pagemake($html);
+    include 'pagemake.php';
+    pagemake($html);
 }
 
 db_close();

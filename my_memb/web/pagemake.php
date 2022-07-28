@@ -1,8 +1,7 @@
 <?php
 /* my_form v0.1  @Shinjia  #2022/07/26 */
 
-function pagemake($content='', $head='')
-{  
+function pagemake($content='', $head='') {  
     $html = <<< HEREDOC
 <!DOCTYPE html>
 <html>
@@ -22,7 +21,6 @@ function pagemake($content='', $head='')
     
     <div id="nav">     
         | <a href="index.php" target="_top">首頁</a>
-        | <a href="page.php?code=note">說明</a> 
         |
     </div>
     
