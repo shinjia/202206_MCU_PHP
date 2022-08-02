@@ -20,7 +20,12 @@ $html = <<< HEREDOC
     <li></li>
     <li><a href="edit_photo.php">大頭貼照片上傳 (edit_photo, edit_photo_save)</a></li>
     <li><a href="image_display.php">會員圖集管理 (image_display, image_save, image_delete)</a></li>
-    <li></li>
+</ul>
+
+<h3>會員有關表單的程式</h3>
+<ul>
+    <li><a href="mform_add.php">新增表單 (mform_add)</a></li>
+    <li><a href="mform_list_all.php">統計並列出各個月份的表單數量 (mform_list_all)</a></li>
 </ul>
 
 HEREDOC;

@@ -24,6 +24,6 @@ define('DEF_PHOTO_PATH', '../photo/');   // 上傳照片的路徑
 // email 的SMTP 設定 (此處暫時用在 PHP 程式的的 ini_set 中，仍應以 php.ini 設定為宜)
 define('SET_SMTP', 'msa.hinet.net');
 define('SET_SMTP_PORT', 25);
-define('SET_SENDMAIL_FROM', 'xxx@gmail.com');  // 
+define('SET_SENDMAIL_FROM', 'shinjia168@gmail.com');  // 
 
 ?>
