@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<title>db2_api</title>
+<link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+<h2>查看測試單一 API 的程式 (較少分開寫)</h2>
+<ul>
+    <li><a href="list.html">list.html [API: read()]</a></li>
+    <li><a href="search.html">search.html [API: read_find()]</a></li>
+</ul>
+
+<hr />
+
+<h2>API test (通常是整合一起使用)</h2>
+
+<ul>
+    <li><button id="btn_list">讀取全部資料</button></li>
+    <li>請輸入 uid:<input type="text" id="uid" size="4" value="5"> <button id="btn_disp">查詢單筆</button></li>
+    <li>請輸入 key:<input type="text" id="key" size="4" value="張"> <button id="btn_find">查詢資料</button></li>
+</ul>
+<div>
+    <p>目前狀況：<span id="message">尚未開始</span></p>
+    <h3>讀入資料範例 (僅第一筆)</h3>
+    <div id="showarea">
+    </div>
+    <h3>讀入資料清單</h3>
+    <div id="tablelist">
+    </div>
+</div>
+
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script  src="script.js"></script>
+
+</body>
+</html>

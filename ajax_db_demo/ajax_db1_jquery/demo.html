@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX_DB_DEMO</title>
+</head>
+<body>
+<h2>使用 jQuery(load) + PHP DB</h2>
+<h3>網頁執行計數：<span id="msg">0</span></h3>
+
+<p>地區選擇
+<select id="city">
+    <option>請選擇地區</option>
+    <option>台北</option>
+    <option>桃園</option>
+    <option>新竹</option>
+    <option>台中</option>
+    <option>台南</option>
+    <option>宜蘭</option>
+    <option>台南</option>
+    <option>花蓮</option>
+    <option>高雄</option>
+</select>
+</p>
+
+<div id="showarea" style="background-color:#AAFFCC;"></div>
+
+<script src="jquery.js"></script>
+<script>
+$(document).ready(function(){
+    // 設定計數器
+    setInterval(() => {
+        $('#msg').html(1+parseInt($('#msg').html()));
+    }, 100);
+
+    // 設定地區選擇改變時的動作
+    $('#city').change(function(){
+        var prog = 'list_by_address.php?code=' + $('#city').val();
+        $('#showarea').load(prog);
+    });
+});
+</script>
+</body>
+</html>

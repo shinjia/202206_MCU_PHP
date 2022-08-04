@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AJAX Demo</title>
+</head>
+<body>
+<h1>陽明山的景點</h1>
+<p><button id="d1">(1.txt) 前山公園 (讀取一個文字檔，正常)</button></p>
+<p><button id="d2">(2.txt) 陽明山公園 (讀取一個文字檔，正常)</button></p>
+<p><button id="d3">(3.txt) 陽明書屋 (讀取一個文字檔，但編碼未改成utf-8，會有問題)</button></p>
+<p><button id="d4">(4.html) 內部網頁 (讀取一個網頁檔，因含頁面背景屬性，會失控)</button></p>
+<p><button id="d4a">(4a.html) 內部網頁 (讀取一個網頁檔，僅保留資料部份)</button></p>
+<p><button id="d5_a">(5.html #part1) 網頁之指定部份 (讀取一個網頁檔，要顯示的部份加入id設定)</button></p>
+<p><button id="d5_b">(5.html #part2) 網頁之指定部份 (讀取一個網頁檔，要顯示的部份加入id設定)</button></p>
+<p><button id="d6">外部網站 (不能讀取外部網站進ajax)</button></p>
+<hr />
+<h2>讀取的資料顯示於下方</h2>
+<hr />
+<div id="showarea" style="background-color:#AAAAFF;">...初始未讀入資料...</div>
+<hr />
+<button id="btn">取得頁面內部的資料 (僅5.html會有作用)</button>
+<p id="msg">&nbsp;</p>
+<hr />
+
+
+<script src="jquery.js"></script>
+<script>
+$(document).ready( function() {
+	
+    $('#d1').click( function() {
+        $('#showarea').load( 'data/1.txt' );
+    });
+        
+    $('#d2').click( function() {
+        $('#showarea').load( 'data/2.txt' );
+    });
+    
+    $('#d3').click( function() {
+        $('#showarea').load( 'data/3.txt' );
+    });
+    
+    $('#d4').click( function() {
+        $('#showarea').load( 'data/4.html' );
+    });
+    
+    $('#d4a').click( function() {
+        $('#showarea').load( 'data/4a.html' );
+    });
+    
+    $('#d5_a').click( function() {
+        $('#showarea').load( 'data/5.html #part1' );
+    });
+    
+    $('#d5_b').click( function() {
+        $('#showarea').load( 'data/5.html #part2' );
+    });
+    
+    $('#d6').click( function() {
+        prog = 'http://travel.network.com.tw/tourguide/point/showpage/429.html';
+        $('#showarea').load( prog );
+    });
+    
+    
+    $('#btn').click( function() {
+        var m = $('#message').html();
+        $('#msg').html( m );
+    });
+
+} );
+</script>
+
+</body>
+</html>

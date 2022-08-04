@@ -17,11 +17,61 @@
         <a href="db_pdo/">db_pdo</a> |
         <a href="db2_pdo/">db2_pdo</a> ||| 
         <a href="my_memb/">my_memb</a> |
-        
+        <a href="my_store/">my_store</a> |
     </p>
 </div>
 
+<p>
+</p>
+<ul>
+    <li><a href="db_mysqli/">db_mysqli 初步講解用，有危險的程式</a></li>
+    <li><a href="db_pdo_sth/">db_pdo_sth  (重要)</a></li>
+    <li><a href="db_ext/">db_ext</a> 練習 person 資料表的各種操作</li>
+    <li><a href="db_ext2/">db_ext2 (重要)</a></li>
+    <li><a href="db_pdo/">db_pdo (重要)</a></li>
+    <li><a href="db_sqlite3/">db_sqlite3 檔案做資料庫</a></li>
+    <li>--------------------------</li>
+    <li><a href="db2_pdo/">db2_pdo 讓流程變得很順暢 (大量在網頁間傳遞參數)</a></li>
+    <li><a href="db2_pdo_cookie/">db2_pdo_cookie 讓流程變得很順暢 (使用 Cookie)</a></li>
+    
+    <li><a href="db2_bootstrap5/">db2_bootstrap5 套用 Bootsrap5 美工 (由 db_pdo_sth 擴充的)</a></li>
+    <li><a href="db2_pdo_bootstrap5/">db2_pdo_bootstrap5 套用 Bootsrap5 美工 (由 db_pdo 擴充的)</a></li>
+    <li><a href="db2_api/">db2_api 把 PHP 做為 API 的寫法 (包含 JSON, AJAX)</a></li>
+    <li>--------------------------</li>
+    <li><a href="my_book/">my_book (改欄位而已)</a></li>
+    <li><a href="my_memb/">my_memb (重要) 會員資料表及表單，一對多</a></li>
+    <li><a href="my_store/">my_store 購物車流程，多對多</a></li>
+</ul>
 
+
+<h2>Class 14 (2022/08/04)</h2>
+
+<p>前端與後端</p>
+<ul>
+    <li><a href="ajax/">ajax : 了解 ajax 的寫法</a></li>
+    <li><a href="ajax_db_demo/">ajax : ajax 結合資料庫</a></li>
+    <li><a href="json_php/">json_php : PHP 處理 JSON</a></li>
+    <li><a href="db2_api/">db2_api : PHP 做為 API 的概念</a></li>
+</ul>
+
+<p>my_store (購物車開發雛形)</p>
+<ul>
+    <li><a href="my_store/">my_store</a></li>
+</ul>
+
+<p>db_sqlite3 (SQLite 3)</p>
+<ul>
+    <li><a href="db_sqlite3/">db_sqlite3</a></li>
+</ul>
+<p>&nbsp;</p>
+
+
+<h2>Class 13 (2022/08/02)</h2>
+
+<p>my_memb</p>
+<ul>
+    <li><a href="my_memb/">my_memb 各個細項功能</a></li>
+</ul>
 
 
 <h2>Class 12 (2022/07/28)</h2>
@@ -40,11 +90,6 @@
 <p>前端網頁為主的上傳功能 (jQuery-File-Upload)</p>
 <ul>
     <li><a href="jQuery-File-Upload/">jQuery-File-Upload</a></li>
-</ul>
-
-<p>PHP 處理 JSON (json_php)</p>
-<ul>
-    <li><a href="json_php/">json_php</a></li>
 </ul>
 
 <p>&nbsp;</p>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AJAX Demo</title>
+</head>
+<body>
+<h1>注意：此範例非AJAX</h1>
+<hr>
+
+<input type="button" id="btn1" value="關渡美術館">
+<input type="button" id="btn2" value="淡水">
+<div id="msg">?</div>
+
+<iframe id="intro" src="http://g9app.com/b418/web/index.html" width="600" height="400"></iframe>
+
+<p>注意：測試此頁時不要使用 https，同時注意外部網站是否允許 iframe 嵌入</p>
+
+<script type="text/javascript" src="jquery.js"></script>
+<script language="javascript">
+$(document).ready(function(){
+        
+    $('#btn').click(function(){
+        var m = $('#message').html();
+        $('#msg').html( m );
+    });
+    
+    $('#btn1').click(function(){
+        prog  = 'https://zh.wikipedia.org/wiki/%E9%97%9C%E6%B8%A1%E7%BE%8E%E8%A1%93%E9%A4%A8';
+            $('#msg').html(prog);
+            $('#intro').attr('src', prog);
+            //document.getElementById('intro').src = prog;
+        });
+
+    $('#btn2').click(function(){
+        prog  = 'http://zh.wikipedia.org/wiki/%E6%B7%A1%E6%B0%B4';
+            $('#msg').html(prog);
+            $('#intro').attr('src', prog);
+        });   
+
+} );
+</script>
+</body>
+</html>

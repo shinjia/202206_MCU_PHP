@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AJAX Demo</title>
+</head>
+<body>
+<h2>單純的 Javascript 預備</h2>
+<h3>網頁執行計數：<span id="msg">0</span></h3>
+
+<p>地區選擇</p>
+<select id="city">
+	<option>台北</option>
+	<option>新北</option>
+	<option>台中</option>
+	<option>基隆</option>
+	<option>台南</option>
+	<option>高雄</option>
+	<option>宜蘭</option>
+	<option>桃園</option>
+	<option>新竹</option>
+</select>
+
+<div id="showarea" style="background-color:#99CC55;">XXX</div>
+
+<script>
+setInterval(() => {
+    document.getElementById('msg').innerHTML = 1+parseInt(document.getElementById('msg').innerHTML);
+}, 100);
+
+document.getElementById('city').onchange=function(){
+    var val = document.getElementById('city').value;
+
+    var showarea = document.getElementById('showarea');
+    showarea.innerHTML = '----- 選擇的是：' + val + ' -----';
+};
+</script>
+</body>
+</html>

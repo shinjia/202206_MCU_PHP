@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJAX_DB_DEMO</title>
+<style>
+    .omover { background-color:#3366FF; color:#33FFFF; }
+    .omout { background-color:#FFCC66; color:#CC0000; }
+</style>
+</head>
+<body>
+<h2>JavaScript + PHP</h2>
+<h3>網頁執行計數：<span id="msg">0</span></h3>
+
+<p>地區選擇
+    <select id="city">
+        <option>台北</option>
+        <option>新北</option>
+        <option>台中</option>
+        <option>基隆</option>
+        <option>台南</option>
+        <option>高雄</option>
+        <option>宜蘭</option>
+        <option>桃園</option>
+        <option>新竹</option>
+    </select>
+</p>
+    
+<table border="0" width="600">
+    <tr>
+        <td width="50%" bgcolor="#99EE77">
+            <div id="area_list"></div>
+        </td>
+        <td width="50%" valign="top" bgcolor="#FFAAFF">
+            <div id="area_display"></div>
+        </td>
+    </tr>
+</table>
+    
+<script>
+    setInterval(() => {
+        document.getElementById('msg').innerHTML = 1+parseInt(document.getElementById('msg').innerHTML);
+    }, 100);
+</script>
+<script src="async.js"></script>
+</body>
+</html>

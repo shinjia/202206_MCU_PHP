@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<title>AJAX_DB_DEMO</title>
+</head>
+</head>
+<body>
+<h2>jQuery(ajax) + PHP (一些變化: jQuery UI Dialog)</h2>
+<h3>網頁執行計數：<span id="msg">0</span></h3>
+
+<p>地區選擇
+    <select id="city">
+        <option>台北</option>
+        <option>新北</option>
+        <option>台中</option>
+        <option>基隆</option>
+        <option>台南</option>
+        <option>高雄</option>
+        <option>宜蘭</option>
+        <option>桃園</option>
+        <option>新竹</option>
+        <option>沒有</option>
+    </select>
+    <span id="area_list"></span>
+</p>
+        
+<div id="dialog" title="個人基本資料">
+    <div id="area_display"></div>
+</div>
+
+
+<!-- <script src="jquery.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script>
+$(document).ready(function(){
+    // 設定計數器
+    setInterval(() => {
+        $('#msg').html(1+parseInt($('#msg').html()));
+    }, 100);
+
+    // 設定地區選擇改變時的動作
+    $('#city').change(function(){
+        var prog = 'list_and_ajax.php?code=' + $('#city').val();
+
+        // $('#area_list').load(prog);
+        $.ajax({
+            url: 'list_and_ajax.php',
+            data: {
+                code: $('#city').val()
+            },
+            type: 'GET',
+            dataType: 'html',
+            success: function(data,textStatus,jqXHR) {
+                $('#area_list').html(data);
+            },
+            error: function() {
+                $('#area_list').html('error !');
+            }
+            
+        });
+
+    });
+});
+
+function show_detail()
+{
+    $.ajax({
+        url: 'display.php',
+        data: {
+            uid: $('#username').val()
+        },
+        type: 'GET',
+        dataType: 'html',
+        success: function(data,textStatus,jqXHR) {
+            $('#area_display').html(data);
+            $("#dialog").dialog();
+        },
+        error: function() {
+            $('#area_display').html('error !');
+            $("#dialog").dialog();
+        }
+    });
+}
+</script>
+</body>
+</html>
